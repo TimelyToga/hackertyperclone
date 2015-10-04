@@ -10,10 +10,43 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# Build paths inside tq`he project like this: os.path.join(BASE_DIR, ...)
 import os
+from os.path import abspath, dirname, join, normpath
+from sys import path
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+APP_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'app'))
+
+SITE_ROOT = dirname(dirname(abspath(__file__)))
+
+SETTINGS_PATH = os.path.dirname(__file__)
+PROJECT_PATH = os.path.join(SETTINGS_PATH, os.pardir)
+PROJECT_PATH = os.path.abspath(PROJECT_PATH)
+TEMPLATES_PATH = os.path.join(PROJECT_PATH, "templates")
+
+
+## TEMPLATES
+TEMPLATES = [{
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'APP_DIRS': True,
+    'DIRS': [
+        TEMPLATES_PATH
+    ],
+    'OPTIONS': {
+        'context_processors': (
+            "django.contrib.auth.context_processors.auth",
+            "django.core.context_processors.debug",
+            "django.core.context_processors.i18n",
+            "django.core.context_processors.media",
+            "django.core.context_processors.static",
+            "django.contrib.messages.context_processors.messages",
+            "Store.views.items_in_cart",
+        ),
+    },
+},]
+
+ROOT_URLCONF = 'hackertyperclone.urls'
 
 
 # Quick-start development settings - unsuitable for production
@@ -49,24 +82,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
-
-ROOT_URLCONF = 'hackertyperclone.urls'
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
 
 WSGI_APPLICATION = 'hackertyperclone.wsgi.application'
 
