@@ -15,18 +15,28 @@ import os
 from os.path import abspath, dirname, join, normpath
 from sys import path
 
+
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APP_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'app'))
-
-PROJECT_PATH = os.path.dirname(os.path.normpath(__file__))
-
-SITE_ROOT = dirname(dirname(abspath(__file__)))
 
 SETTINGS_PATH = os.path.dirname(__file__)
 PROJECT_PATH = os.path.join(SETTINGS_PATH, os.pardir)
 PROJECT_PATH = os.path.abspath(PROJECT_PATH)
 TEMPLATES_PATH = join(PROJECT_PATH, join("hackertyperclone", "templates"))
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+APP_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'app'))
+STATIC_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'static'))
+# STATIC_DIR = os.path.abspath(os.path.join(BASE_DIR, 'static'))
+FONTS_DIR = os.path.abspath(os.path.join(STATIC_DIR, 'fonts'))
+FAVICON = os.path.abspath(os.path.join(STATIC_DIR, 'favicon.ico'))
+JS_DIR = os.path.abspath(os.path.join(STATIC_DIR, 'js'))
+CSS_DIR = os.path.abspath(os.path.join(STATIC_DIR, 'css'))
+SCSS_DIR = os.path.abspath(os.path.join(STATIC_DIR, 'scss'))
+IMG_DIR = os.path.abspath(os.path.join(STATIC_DIR, 'img'))
 
 
 
@@ -117,7 +127,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+# Static asset configuration
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
@@ -128,13 +146,3 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
-
-# Static asset configuration
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)

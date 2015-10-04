@@ -17,7 +17,18 @@ from django.conf.urls import include, url
 from django.contrib import admin
 import hackertyperclone.views
 
-urlpatterns = [
+from django.conf.urls import patterns, include, url
+
+
+
+
+urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', hackertyperclone.views.main_view),
-]
+
+    (r'^css/(?P<path>.*)$', 'django.views.static.serve', {'document_root': hackertyperclone.settings.CSS_DIR}),
+    (r'^img/(?P<path>.*)$', 'django.views.static.serve', {'document_root': hackertyperclone.settings.IMG_DIR}),
+    (r'^js/(?P<path>.*)$', 'django.views.static.serve', {'document_root': hackertyperclone.settings.JS_DIR}),
+    (r'^favicon.ico$', 'django.views.static.serve',
+     {'path': 'favicon.ico', 'document_root': hackertyperclone.settings.STATIC_DIR, 'show_indexes': False} ),
+    )
