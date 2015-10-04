@@ -1,0 +1,1 @@
+web: gunicorn hackertyperclone.wsgi --log-file -
