@@ -15,21 +15,24 @@ import os
 from os.path import abspath, dirname, join, normpath
 from sys import path
 
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APP_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'app'))
+
+PROJECT_PATH = os.path.dirname(os.path.normpath(__file__))
 
 SITE_ROOT = dirname(dirname(abspath(__file__)))
 
 SETTINGS_PATH = os.path.dirname(__file__)
 PROJECT_PATH = os.path.join(SETTINGS_PATH, os.pardir)
 PROJECT_PATH = os.path.abspath(PROJECT_PATH)
-TEMPLATES_PATH = os.path.join(PROJECT_PATH, "templates")
+TEMPLATES_PATH = join(PROJECT_PATH, join("hackertyperclone", "templates"))
+
 
 
 ## TEMPLATES
 TEMPLATES = [{
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
-    'APP_DIRS': True,
     'DIRS': [
         TEMPLATES_PATH
     ],
