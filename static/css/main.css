@@ -1,7 +1,14 @@
 html {
-    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
     background-color: black;
     color: lime;
     padding: 20px;
-    font-family: 'Cutive Mono', ;
+    font-family: 'Cutive Mono';
+    font-size: 12pt;
+    line-height: 170%;
+}
+
+#cursor {
+    font-size: 14pt;
+    font-weight: bolder;
 }
