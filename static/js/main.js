@@ -66,7 +66,7 @@ function revealCode(){
 
     // Insert Line break if at EOL
     $("span").last().prev().append(curAppendSubstring);
-    if(linePointer > curLine.length){
+    if(linePointer >= curLine.length){
         $("span").last().prev().append(document.createElement("br"));
         $("span").last().prev().append(adjustTabs());
     }
