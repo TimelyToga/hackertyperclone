@@ -33,7 +33,7 @@ window.onload=function () {
 };
 
 function initVars() {
-    varsInUse = ["a", "b", "c", "curDist", "servers", "dynamicTableArray", "curSrcDst", "migrationIndex", "PUBLIC_ERROR_CALL", "MDASH", "CCREATE", "mtDAB", "frame", "ia", "dTree", "errRate", "canRemove"];
+    varsInUse = ["System", "FIREWALL_MASTER_CONTROL", "c", "curDist", "servers", "dynamicTableArray", "curSrcDst", "migrationIndex", "PUBLIC_ERROR_CALL", "MDASH", "CCREATE", "mtDAB", "g_frame", "mRefQueue", "dTree", "errRate", "canRemove"];
     lineGrammars  = [
     {code: "ZZZ = (ZZZ * ZZZ) / 2;", vars:"VVV"},
     {code: "ZZZ[ZZZ];", vars:"VI"},
@@ -97,7 +97,7 @@ function getArrayFromString(s){
     for (var i = 0; i < s.length; i++){
         var curChar = s[i];
         if(curChar == "V"){
-            out.push(varsInUse[Math.floor(Math.random() * lineGrammars.length)]);
+            out.push(varsInUse[Math.floor(Math.random() * varsInUse.length)]);
         } else if (curChar == "I"){
             var num = Math.floor(Math.random() * MAX_INT_SIZE);
             out.push(num.toString());
