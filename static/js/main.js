@@ -7,7 +7,7 @@ var linePointer = 0;
 var jumpDistance = 8;
 var curP;
 
-var MAX_INT_SIZE = 1000;
+var MAX_INT_SIZE = 10;
 
 var REPLACE_PATTERN = /ZZZ/i;
 
@@ -34,14 +34,20 @@ window.onload=function () {
 
 function initVars() {
     varsInUse = ["System", "FIREWALL_MASTER_CONTROL", "c", "curDist", "servers", "dynamicTableArray", "curSrcDst", "migrationIndex", "PUBLIC_ERROR_CALL", "MDASH", "CCREATE", "mtDAB", "g_frame", "mRefQueue", "dTree", "errRate", "canRemove"];
+    methods = ["create", "restartPhase", "recountConst", "configureInputs", "alignMatrices", "calcMaxPing", "isSecurityActive?", "go"];
     lineGrammars  = [
     {code: "ZZZ = (ZZZ * ZZZ) / 2;", vars:"VVV"},
-    {code: "ZZZ[ZZZ];", vars:"VI"},
+    {code: "ZZZ[ZZZ] += ZZZ(ZZZ);", vars:"VIVV"},
     {code: "ZZZ[ZZZ] = ZZZ[ZZZ-1]++;", vars:"VVVV"},
     {code: "ZZZ = System.callingRemoteTransfer();", vars:"V"},
     {code: "clearCallingCache();", vars:""},
     {code: "ZZZ.getTemplateInfo.parent.reverse() += 1;", vars:"V"},
     {code: "fprintf(ZZZ);", vars: "V"},
+        {code: "ZZZ.ZZZ(ZZZ, ZZZ, ZZZ);", vars: "VMVIV"},
+        {code: "ZZZ(ZZZ.ZZZ().ZZZ());", vars: "MVMM"},
+        {code: "if(ZZZ > ZZZ) ZZZ++;", vars: "VVV"},
+        {code: "while (ZZZ > 0) ZZZ(ZZZ);", vars: "VMV"},
+        {code: "\n\n", vars: ""},
     ];
     lines = new Queue();
 }
@@ -101,6 +107,8 @@ function getArrayFromString(s){
         } else if (curChar == "I"){
             var num = Math.floor(Math.random() * MAX_INT_SIZE);
             out.push(num.toString());
+        } else if (curChar == "M") {
+            out.push(methods[Math.floor(Math.random() * methods.length)]);
         }
     }
 
